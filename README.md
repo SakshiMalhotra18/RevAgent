@@ -1,8 +1,6 @@
 # RevAgent 📈✨
 ### *AI-Driven Revenue Intelligence & Predictive Anomaly Detection*
 
-![RevAgent Hero](/revagent_hero_mockup_1777739115773.png)
-
 **RevAgent** is a sophisticated, enterprise-grade business health platform designed to transform raw financial data into strategic clarity. Built with a focus on both **statistical rigor** and **premium user experience**, RevAgent automates the detection of revenue leaks, marketing inefficiencies, and growth opportunities.
 
 ---
