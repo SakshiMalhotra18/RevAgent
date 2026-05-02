@@ -1,92 +1,82 @@
-# RevAgent 📈🤖
+# RevAgent 📈✨
+### *AI-Driven Revenue Intelligence & Predictive Anomaly Detection*
 
-**RevAgent** is an intelligent, AI-powered business health dashboard designed for founders, marketing teams, and executives. It ingests your raw business metrics (Revenue, Ad Spend, and Traffic), detects statistical anomalies, and generates high-level AI insights explaining exactly what changed and what actions you should take next.
+![RevAgent Hero](/revagent_hero_mockup_1777739115773.png)
 
----
-
-## ✨ Features
-
-- **Automated Metric Ingestion**: Upload your Revenue, Ad Spend, and Traffic CSVs and RevAgent will align, normalize, and process them instantly.
-- **Statistical Anomaly Detection**: Built with Pandas and Scikit-learn to calculate rolling means, standard deviations, and detect severe outliers in your business performance.
-- **AI Analyst Reports**: Integrates with Groq's high-speed LLMs to write clear, actionable reports explaining *why* an anomaly occurred and *who* needs to fix it.
-- **Premium Glassmorphism Dashboard**: A state-of-the-art Next.js frontend with stunning typography, glowing gradient borders, and smooth micro-animations.
-- **Instant Demo Mode**: Use the "Load Sample Data" option to instantly view a realistic, populated dashboard without needing a running backend.
+**RevAgent** is a sophisticated, enterprise-grade business health platform designed to transform raw financial data into strategic clarity. Built with a focus on both **statistical rigor** and **premium user experience**, RevAgent automates the detection of revenue leaks, marketing inefficiencies, and growth opportunities.
 
 ---
 
-## 🛠️ Technology Stack
-
-### Frontend (Dashboard)
-- **Framework**: Next.js 16 (App Router), React
-- **Styling**: Tailwind CSS (Premium Glassmorphism, Dark Mode)
-- **Data Fetching**: React Query (@tanstack/react-query)
-- **Charts**: Recharts (Responsive, custom-styled tooltips)
-
-### Backend (AI Engine)
-- **API Framework**: FastAPI (Python)
-- **Data Processing**: Pandas, NumPy
-- **Anomaly Detection**: Scikit-learn (Isolation Forest), Statistical Modeling
-- **LLM Integration**: Groq API, LangChain
+## 💎 The Vision
+Most business intelligence tools are either too simple (static dashboards) or too complex (unreadable spreadsheets). **RevAgent bridges this gap** by combining advanced Python-based anomaly detection with a world-class, "Glassmorphic" Next.js interface. It doesn't just show you that a metric changed—it uses AI to explain *why* it happened and *what* to do next.
 
 ---
 
-## 🚀 Getting Started
+## 🚀 Core Capabilities
 
-### 1. View the Live Demo
-You can view the fully styled, interactive frontend here: 
-**[RevAgent on Vercel](https://rev-agent.vercel.app/)**
-*(Note: Click "Load Sample Data" to bypass the backend and view the dashboard instantly).*
+- **✨ Intelligence Hub**: A high-impact "Business Pulse" indicator that provides an instant read on overall company health using multi-vector scoring.
+- **🔍 Statistical Anomaly Detection**: Leverages Scikit-learn and Pandas to identify deviations in Revenue, CAC, and Ad Spend that fall outside of 3-sigma confidence intervals.
+- **🤖 Generative Strategy Reports**: Integrates with **Groq-powered LLMs** to synthesize complex data variances into human-readable executive summaries and action plans.
+- **🎨 Premium Glassmorphic UI**: A stunning, light-mode interface featuring translucent surfaces, subtle indigo glows, and responsive Recharts visualizations.
+- **⚡ Instant Exploration**: Includes a "Demo Mode" with high-fidelity synthetic data, allowing stakeholders to experience the platform's full power without local backend configuration.
 
-### 2. Run Locally
+---
 
-#### Prerequisites
-- Node.js (v18+)
-- Python 3.10+
-- A Groq API Key
+## 🛠️ Engineering Stack
 
-#### Setup the Frontend
+### **Frontend Architecture**
+- **Framework**: [Next.js 14](https://nextjs.org/) (App Router)
+- **Styling**: [Tailwind CSS](https://tailwindcss.com/) (Custom Glassmorphism & Light Theme)
+- **Visualization**: [Recharts](https://recharts.org/) (Custom-themed Intelligence Charts)
+- **Icons**: [Lucide React](https://lucide.dev/)
+
+### **Backend & AI Engine**
+- **Core API**: [FastAPI](https://fastapi.tiangolo.com/) (Python 3.11+)
+- **Analysis**: [Pandas](https://pandas.pydata.org/), [NumPy](https://numpy.org/), [Scikit-learn](https://scikit-learn.org/)
+- **GenAI**: [Groq API](https://groq.com/) (Llama-3-70B)
+- **Data Science**: Isolation Forest Anomaly Detection & Statistical Variance Modeling
+
+---
+
+## 🏁 Getting Started
+
+### **1. Rapid Deployment (Frontend Only)**
+The frontend is optimized for zero-config exhibition.
 ```bash
 cd revagent-ui
 npm install
 npm run dev
 ```
-The dashboard will be available at `http://localhost:3000`.
+*Navigate to `http://localhost:3000` and select **"Load Sample Data"** for the full experience.*
 
-#### Setup the Backend
-```bash
-# In the root directory
-python -m venv venv
-source venv/bin/activate  # Or `venv\Scripts\activate` on Windows
-pip install -r requirements.txt
-
-# Set your Groq API Key
-export GROQ_API_KEY="your-api-key-here"
-
-# Start the FastAPI Server
-uvicorn api.main:app --reload
-```
-The AI engine will run on `http://localhost:8000`.
+### **2. Full Pipeline (With AI Engine)**
+1. **Set Environment Variables**:
+   Create a `.env` file in the root:
+   ```env
+   GROQ_API_KEY=your_key_here
+   ```
+2. **Launch the API**:
+   ```bash
+   pip install -r requirements.txt
+   uvicorn api.main:app --reload
+   ```
 
 ---
 
-## 📁 Project Structure
-
+## 📂 System Architecture
 ```text
 revagent/
-├── agent/                  # Python AI logic (detection, analysis, generation)
-├── api/                    # FastAPI endpoints and models
-├── data/                   # Raw and processed CSV/JSON data storage
-├── revagent-ui/            # Next.js React Frontend
-│   ├── src/app/            # App router pages and layouts
-│   ├── src/components/     # Dashboard cards, charts, and layout elements
-│   └── src/lib/            # API client and TypeScript interfaces
-└── scratch/                # Synthetic data generation scripts
+├── agent/                  # Statistical modeling & LLM orchestration
+├── api/                    # FastAPI high-performance endpoints
+├── revagent-ui/            # Next.js 14 Premium Dashboard
+│   ├── src/components/     # Modular Glassmorphic components
+│   └── src/app/            # High-performance routing
+└── scratch/                # Synthetic data & stress-testing scripts
 ```
 
 ---
 
-## 💡 Why RevAgent?
+## 🤝 Built by a Data-First Engineer
+RevAgent was created to showcase the intersection of **Full-Stack Engineering** and **Generative AI**. It demonstrates a commitment to building tools that are not only technically robust but also commercially viable and visually stunning.
 
-As a technical professional with expertise in Full-Stack Engineering, Data Science, and GenAI, I built RevAgent to demonstrate the powerful intersection of **Machine Learning** and **Beautiful Product Design**. 
-
-Too often, powerful data scripts live in boring Jupyter Notebooks. RevAgent takes robust statistical analysis and wraps it in an elegant, enterprise-grade Next.js SaaS dashboard—bridging the gap between raw data and actionable human insight.
+**[Live Demo on Vercel](https://rev-agent.vercel.app/)** | **[LinkedIn](https://www.linkedin.com/in/sakshi-malhotra-18/)**
