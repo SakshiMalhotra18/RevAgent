@@ -1,0 +1,61 @@
+{
+  "summary": "Churn rate has spiked by 254.55% on April 27, and CAC has increased by 19.53% on May 2, indicating potential customer acquisition and retention issues.",
+  "changes": [
+    {
+      "metric": "churn_rate",
+      "direction": "up",
+      "magnitude": "254.55%",
+      "period": "April 27"
+    },
+    {
+      "metric": "CAC",
+      "direction": "up",
+      "magnitude": "19.53%",
+      "period": "May 2"
+    }
+  ],
+  "drivers": [
+    {
+      "hypothesis": "The sudden increase in churn rate on April 27 may be caused by a change in customer behavior or a product issue, which could be exacerbated by a higher CAC on May 2, indicating that the company is spending more to acquire customers who are more likely to churn.",
+      "confidence": "high",
+      "supporting_metrics": [
+        "churn_rate",
+        "CAC"
+      ],
+      "evidence": "The churn rate increased from 0.0023 to 0.0117 on April 27, while CAC increased from $24.6297 to $31.387 on May 2."
+    }
+  ],
+  "actions": [
+    {
+      "action": "Review customer feedback and product logs to identify potential issues causing the spike in churn rate.",
+      "owner": "product",
+      "urgency": "now",
+      "expected_impact": "Identify and fix the root cause of the churn rate increase to prevent further customer loss."
+    },
+    {
+      "action": "Analyze the impact of the increased CAC on customer acquisition costs and consider adjusting marketing strategies to optimize ROI.",
+      "owner": "marketing",
+      "urgency": "this_week",
+      "expected_impact": "Optimize customer acquisition costs to maintain a healthy customer base."
+    },
+    {
+      "action": "Monitor the churn rate and CAC metrics closely to ensure that the issues are being addressed and the company is not experiencing further decline.",
+      "owner": "ops",
+      "urgency": "monitor",
+      "expected_impact": "Maintain a healthy customer base and prevent further decline."
+    }
+  ],
+  "watch_list": [
+    {
+      "metric": "refund_rate",
+      "reason": "Refund rate has remained steady at 0.05, but a change in this metric could indicate issues with customer satisfaction or product quality."
+    },
+    {
+      "metric": "conversion_rate",
+      "reason": "Conversion rate has decreased from 0.0293 to 0.0207, indicating potential issues with marketing effectiveness or product relevance."
+    }
+  ],
+  "provider_used": "groq",
+  "mode_used": "recent_issues",
+  "report_type": "Recent Issues"
+}

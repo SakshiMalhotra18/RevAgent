@@ -1,0 +1,17 @@
+pandas
+numpy
+python-dotenv
+openai
+pydantic
+scipy
+scikit-learn
+matplotlib
+jupyter
+pytest
+fastapi
+uvicorn[standard]
+python-multipart
+sqlalchemy
+groq
+tabulate
+httpx
