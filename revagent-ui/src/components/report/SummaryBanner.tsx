@@ -34,39 +34,39 @@ export default function SummaryBanner({ report }: SummaryBannerProps) {
   const isHistorical = report.mode_used === "historical_patterns"
 
   return (
-    <section className="mb-8 relative overflow-hidden rounded-3xl border border-white/10 bg-zinc-950/80 p-8 backdrop-blur-xl shadow-2xl">
-      {/* Decorative background glow */}
-      <div className="absolute -left-32 -top-32 h-64 w-64 rounded-full bg-violet-600/20 blur-3xl"></div>
-      <div className="absolute -right-32 -bottom-32 h-64 w-64 rounded-full bg-indigo-600/20 blur-3xl"></div>
+    <section className="mb-8 relative overflow-hidden rounded-[2.5rem] border border-slate-200 bg-white/80 p-8 backdrop-blur-xl shadow-xl shadow-slate-200/40">
+      {/* Decorative background glow - softer for light mode */}
+      <div className="absolute -left-32 -top-32 h-64 w-64 rounded-full bg-violet-500/5 blur-3xl"></div>
+      <div className="absolute -right-32 -bottom-32 h-64 w-64 rounded-full bg-indigo-500/5 blur-3xl"></div>
 
       <div className="relative">
         <div className="mb-6 flex items-center justify-between">
-          <div className="flex items-center gap-3">
-            <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-violet-500/20 border border-violet-500/30">
-              <svg className="text-violet-400" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+          <div className="flex items-center gap-4">
+            <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-violet-600 shadow-lg shadow-violet-600/20">
+              <svg className="text-white" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round">
                 <path d="M12 2v20"></path>
                 <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"></path>
               </svg>
             </div>
             <div>
-              <h2 className="text-xl font-bold tracking-tight text-white">AI Analyst Summary</h2>
-              <div className="text-xs font-medium text-zinc-400">Powered by {report.provider_used}</div>
+              <h2 className="text-2xl font-black tracking-tight text-slate-900">AI Intelligence Report</h2>
+              <div className="text-[10px] font-bold uppercase tracking-widest text-slate-400">Analysis Engine: {report.provider_used}</div>
             </div>
           </div>
 
           <span
-            className={`rounded-full px-3 py-1.5 text-xs font-bold tracking-wide uppercase ${
+            className={`rounded-full px-4 py-2 text-[10px] font-bold tracking-widest uppercase border ${
               isHistorical
-                ? "bg-violet-500/20 text-violet-300 border border-violet-500/30"
-                : "bg-amber-500/20 text-amber-300 border border-amber-500/30"
+                ? "bg-violet-50 text-violet-600 border-violet-100"
+                : "bg-amber-50 text-amber-600 border-amber-100"
             }`}
           >
             {report.report_type}
           </span>
         </div>
 
-        <div className="relative rounded-2xl border border-white/5 bg-black/40 p-6 backdrop-blur-md">
-          <div className="text-lg leading-relaxed text-zinc-200">
+        <div className="relative rounded-3xl border border-slate-100 bg-slate-50/50 p-8 backdrop-blur-md">
+          <div className="text-lg font-medium leading-relaxed text-slate-600">
             {report.summary}
           </div>
         </div>

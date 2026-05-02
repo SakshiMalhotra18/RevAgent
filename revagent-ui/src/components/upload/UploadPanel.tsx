@@ -21,11 +21,11 @@ function UploadBox({
   onChange: (file: File | null) => void
 }) {
   return (
-    <label className="flex min-h-[140px] cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-zinc-700 bg-zinc-900/60 p-6 text-center transition-all duration-300 hover:border-violet-500 hover:bg-violet-950/20 hover:shadow-[0_0_15px_rgba(139,92,246,0.1)]">
-      <div className="mb-2 text-sm font-medium text-zinc-300">{label}</div>
-      <div className="text-sm text-zinc-500">
+    <label className="flex min-h-[140px] cursor-pointer flex-col items-center justify-center rounded-2xl border border-dashed border-slate-300 bg-white p-6 text-center transition-all duration-300 hover:border-violet-400 hover:bg-slate-50 hover:shadow-sm">
+      <div className="mb-2 text-sm font-semibold text-slate-700">{label}</div>
+      <div className="text-sm text-slate-500">
         {file ? (
-          <span className="text-violet-400 font-medium">✓ {file.name}</span>
+          <span className="text-violet-600 font-semibold">✓ {file.name}</span>
         ) : (
           "Click to browse CSV"
         )}
@@ -104,32 +104,33 @@ export default function UploadPanel({
   return (
     <div className="mx-auto flex min-h-screen max-w-3xl items-center px-6 py-16">
       <div className="w-full relative">
-        {/* Glow effect behind the panel */}
-        <div className="absolute -inset-1 rounded-[2rem] bg-gradient-to-r from-violet-600 to-indigo-600 opacity-20 blur-xl"></div>
+        {/* Subtle shadow glow behind the panel */}
+        <div className="absolute -inset-4 rounded-[3rem] bg-violet-600/5 blur-3xl opacity-50"></div>
         
-        <div className="relative rounded-3xl border border-white/10 bg-zinc-950/80 p-8 backdrop-blur-xl md:p-12 shadow-2xl">
+        <div className="relative rounded-[2.5rem] border border-slate-200 bg-white/90 p-8 backdrop-blur-2xl md:p-12 shadow-xl">
           <div className="text-center mb-10">
-            <h1 className="mb-3 text-5xl font-extrabold tracking-tight text-white">
-              Rev<span className="bg-gradient-to-r from-violet-400 to-indigo-400 bg-clip-text text-transparent">Agent</span>
+            <h1 className="mb-3 text-5xl font-black tracking-tight text-slate-900">
+              Rev<span className="text-violet-600">Agent</span>
             </h1>
-            <p className="text-lg text-zinc-400">
-              Upload your business data. Get AI analyst insight.
+            <p className="text-lg font-medium text-slate-500">
+              Transform raw metrics into actionable AI intelligence.
             </p>
           </div>
 
-          <div className="grid gap-5 md:grid-cols-3 mb-8">
+          <div className="grid gap-5 md:grid-cols-3 mb-10">
             <UploadBox label="Revenue CSV" file={revenue} onChange={setRevenue} />
             <UploadBox label="Ad Spend CSV" file={adSpend} onChange={setAdSpend} />
             <UploadBox label="Traffic CSV" file={traffic} onChange={setTraffic} />
           </div>
 
           {error ? (
-            <div className="mb-6 rounded-xl border border-red-500/30 bg-red-500/10 px-5 py-4 text-sm text-red-200">
+            <div className="mb-6 rounded-2xl border border-rose-200 bg-rose-50 px-5 py-4 text-sm font-medium text-rose-700">
               {error}
             </div>
           ) : null}
           
-          <div className="mb-8">
+          <div className="mb-10 flex flex-col items-center">
+            <div className="text-xs font-bold uppercase tracking-widest text-slate-400 mb-3">Analysis Mode</div>
             <ModeToggle mode={mode} onChange={setMode} disabled={isPending || isLoadingSample} />
           </div>
           
@@ -137,22 +138,22 @@ export default function UploadPanel({
             <button
               onClick={handleRun}
               disabled={!canRun}
-              className="flex flex-1 items-center justify-center rounded-xl bg-violet-600 px-6 py-4 text-sm font-semibold text-white shadow-lg transition-all hover:bg-violet-500 hover:shadow-violet-500/25 disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex flex-[1.5] items-center justify-center rounded-2xl bg-violet-600 px-6 py-5 text-sm font-bold text-white shadow-lg shadow-violet-600/20 transition-all hover:bg-violet-700 hover:shadow-violet-600/40 disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {isPending ? "Running Analysis..." : "Run Analysis"}
+              {isPending ? "Analysing Data..." : "Generate Analysis"}
             </button>
             
             <button
               onClick={loadSampleData}
               disabled={isPending || isLoadingSample}
-              className="flex flex-1 items-center justify-center rounded-xl border border-zinc-700 bg-zinc-900 px-6 py-4 text-sm font-semibold text-zinc-300 shadow-lg transition-all hover:border-zinc-500 hover:bg-zinc-800 disabled:cursor-not-allowed disabled:opacity-50"
+              className="flex flex-1 items-center justify-center rounded-2xl border border-slate-200 bg-slate-50 px-6 py-5 text-sm font-bold text-slate-600 transition-all hover:bg-white hover:border-slate-300 hover:shadow-md disabled:cursor-not-allowed disabled:opacity-50"
             >
-              {isLoadingSample ? "Loading Sample..." : "Load Sample Data"}
+              {isLoadingSample ? "Loading..." : "Load Sample Data"}
             </button>
           </div>
           
-          <div className="mt-8 text-center text-xs text-zinc-500">
-            Click &quot;Load Sample Data&quot; to see how RevAgent works instantly.
+          <div className="mt-8 text-center text-[11px] font-bold uppercase tracking-widest text-slate-400">
+            Secure · Private · AI-Powered
           </div>
         </div>
       </div>

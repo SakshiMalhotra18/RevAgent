@@ -23,20 +23,22 @@ import DownloadActions from "@/components/report/DownloadActions"
 
 function LoadingState() {
   return (
-    <div className="mx-auto max-w-7xl px-6 py-10">
-      <div className="mb-6 h-8 w-64 animate-pulse rounded bg-zinc-800" />
-      <div className="mb-8 h-20 animate-pulse rounded-2xl border border-zinc-800 bg-zinc-900" />
-      <div className="grid gap-4 md:grid-cols-2 xl:grid-cols-4">
-        {Array.from({ length: 4 }).map((_, i) => (
-          <div
-            key={i}
-            className="h-32 animate-pulse rounded-2xl border border-zinc-800 bg-zinc-900"
-          />
-        ))}
+    <div className="mx-auto max-w-7xl px-6 py-20 relative z-10 flex flex-col items-center">
+      <div className="h-2 w-64 bg-slate-100 rounded-full overflow-hidden mb-12">
+        <div className="h-full bg-violet-600 animate-[loading_2s_ease-in-out_infinite]" style={{ width: '30%' }}></div>
       </div>
-      <div className="mt-8 grid gap-4 lg:grid-cols-2">
-        <div className="h-80 animate-pulse rounded-2xl border border-zinc-800 bg-zinc-900" />
-        <div className="h-80 animate-pulse rounded-2xl border border-zinc-800 bg-zinc-900" />
+      <div className="text-center">
+        <h2 className="text-2xl font-black text-slate-900 mb-2">Analyzing Business Pulse</h2>
+        <p className="text-sm font-bold text-slate-400 uppercase tracking-widest">Applying AI Statistical Modeling...</p>
+      </div>
+      
+      <div className="mt-16 w-full grid gap-8 opacity-40">
+        <div className="h-24 animate-pulse rounded-[2rem] border border-slate-200 bg-white" />
+        <div className="grid gap-6 md:grid-cols-4">
+          {Array.from({ length: 4 }).map((_, i) => (
+            <div key={i} className="h-32 animate-pulse rounded-3xl border border-slate-200 bg-white" />
+          ))}
+        </div>
       </div>
     </div>
   )
@@ -66,16 +68,16 @@ export default function HomePage() {
   const anomalyDates = [...new Set(analysisResult.anomalies.map((a) => a.date))]
 
   return (
-    <div className="min-h-screen bg-zinc-950">
+    <div className="min-h-screen bg-transparent relative z-10">
       <Header />
 
-      <main className="mx-auto max-w-7xl px-6 py-8">
+      <main className="mx-auto max-w-7xl px-6 py-12">
         <BusinessPulse report={analysisResult.report} />
         <SummaryBanner report={analysisResult.report} />
 
         <KpiCards kpis={analysisResult.kpis} />
 
-        <section className="mb-6 grid gap-6 lg:grid-cols-2">
+        <section className="mb-8 grid gap-8 lg:grid-cols-2">
           <RevenueChart
             data={analysisResult.metrics_preview}
             anomalyDates={anomalyDates}
@@ -83,46 +85,50 @@ export default function HomePage() {
           <AdSpendChart data={analysisResult.metrics_preview} />
         </section>
 
-        <section className="mb-6 grid gap-6 lg:grid-cols-2">
+        <section className="mb-8 grid gap-8 lg:grid-cols-2">
           <CacChart data={analysisResult.metrics_preview} />
           <RefundChart data={analysisResult.metrics_preview} />
         </section>
 
         <AnomalyAlerts anomalies={analysisResult.anomalies} />
 
-        <section className="mb-6">
-          <div className="mb-4 flex gap-2">
-            <button
-              onClick={() => setActiveTab("report")}
-              className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
-                activeTab === "report"
-                  ? "bg-violet-600 text-white"
-                  : "bg-zinc-900 text-zinc-400 hover:bg-zinc-800"
-              }`}
-            >
-              Report
-            </button>
-            <button
-              onClick={() => setActiveTab("raw")}
-              className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
-                activeTab === "raw"
-                  ? "bg-violet-600 text-white"
-                  : "bg-zinc-900 text-zinc-400 hover:bg-zinc-800"
-              }`}
-            >
-              Raw Data
-            </button>
+        <section className="mt-16 mb-20">
+          <div className="mb-8 flex items-center justify-between">
+             <div className="flex p-1.5 gap-1.5 rounded-2xl bg-white border border-slate-200 shadow-sm">
+              <button
+                onClick={() => setActiveTab("report")}
+                className={`rounded-xl px-6 py-2.5 text-[10px] font-black uppercase tracking-widest transition-all ${
+                  activeTab === "report"
+                    ? "bg-violet-600 text-white shadow-lg shadow-violet-600/20"
+                    : "text-slate-400 hover:text-slate-600"
+                }`}
+              >
+                Intelligence Report
+              </button>
+              <button
+                onClick={() => setActiveTab("raw")}
+                className={`rounded-xl px-6 py-2.5 text-[10px] font-black uppercase tracking-widest transition-all ${
+                  activeTab === "raw"
+                    ? "bg-violet-600 text-white shadow-lg shadow-violet-600/20"
+                    : "text-slate-400 hover:text-slate-600"
+                }`}
+              >
+                Processed Data
+              </button>
+            </div>
           </div>
 
           {activeTab === "report" ? (
-            <div className="space-y-8">
+            <div className="space-y-16">
               <ChangesTable changes={analysisResult.report.changes} />
               <DriversSection drivers={analysisResult.report.drivers} />
               <ActionsSection actions={analysisResult.report.actions} />
               <WatchList watchList={analysisResult.report.watch_list} />
             </div>
           ) : (
-            <RawDataTable data={analysisResult.metrics_preview} />
+            <div className="rounded-[2.5rem] border border-slate-200 bg-white overflow-hidden shadow-sm">
+              <RawDataTable data={analysisResult.metrics_preview} />
+            </div>
           )}
 
           <DownloadActions metrics={analysisResult.metrics_preview} />

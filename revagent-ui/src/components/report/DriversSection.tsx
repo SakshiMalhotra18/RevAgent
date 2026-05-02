@@ -7,58 +7,63 @@ interface DriversSectionProps {
 }
 
 function borderClass(confidence: Driver["confidence"]) {
-  if (confidence === "high") return "border-l-red-500"
+  if (confidence === "high") return "border-l-rose-500"
   if (confidence === "medium") return "border-l-amber-500"
-  return "border-l-zinc-500"
+  return "border-l-slate-400"
 }
 
 function badgeClass(confidence: Driver["confidence"]) {
   if (confidence === "high") {
-    return "bg-red-500/15 text-red-400 border border-red-500/30"
+    return "bg-rose-50 text-rose-600 border-rose-100"
   }
   if (confidence === "medium") {
-    return "bg-amber-500/15 text-amber-400 border border-amber-500/30"
+    return "bg-amber-50 text-amber-600 border-amber-100"
   }
-  return "bg-zinc-800 text-zinc-300 border border-zinc-700"
+  return "bg-slate-50 text-slate-500 border-slate-200"
 }
 
 export default function DriversSection({ drivers }: DriversSectionProps) {
   return (
-    <section className="space-y-4">
-      <div className="text-xl font-semibold text-zinc-50">Why it happened</div>
+    <section className="space-y-6">
+      <div className="flex items-center gap-3">
+        <div className="h-8 w-1.5 rounded-full bg-violet-600"></div>
+        <h3 className="text-2xl font-black tracking-tight text-slate-900">Root Cause Analysis</h3>
+      </div>
 
-      {drivers.map((driver, idx) => (
-        <div
-          key={idx}
-          className={`rounded-2xl border border-zinc-800 border-l-4 bg-zinc-900 p-6 ${borderClass(
-            driver.confidence
-          )}`}
-        >
-          <div className="mb-3 flex items-start justify-between gap-4">
-            <div className="font-medium leading-7 text-zinc-100">
-              {driver.hypothesis}
-            </div>
-            <span className={`rounded-full px-2.5 py-1 text-xs font-semibold uppercase ${badgeClass(driver.confidence)}`}>
-              {driver.confidence}
-            </span>
-          </div>
-
-          <div className="mb-4 text-sm leading-6 text-zinc-500">
-            {driver.evidence}
-          </div>
-
-          <div className="flex flex-wrap gap-2">
-            {driver.supporting_metrics.map((metric) => (
-              <span
-                key={metric}
-                className="rounded-full bg-zinc-800 px-3 py-1 text-xs text-zinc-300"
-              >
-                {metric}
+      <div className="grid gap-6">
+        {drivers.map((driver, idx) => (
+          <div
+            key={idx}
+            className={`rounded-[2rem] border border-slate-200 border-l-[6px] bg-white p-8 shadow-sm transition-all hover:shadow-md ${borderClass(
+              driver.confidence
+            )}`}
+          >
+            <div className="mb-4 flex items-start justify-between gap-6">
+              <div className="text-lg font-bold leading-tight text-slate-800">
+                {driver.hypothesis}
+              </div>
+              <span className={`shrink-0 rounded-full px-3 py-1 text-[10px] font-black uppercase tracking-widest border ${badgeClass(driver.confidence)}`}>
+                {driver.confidence} confidence
               </span>
-            ))}
+            </div>
+
+            <div className="mb-6 text-sm leading-relaxed font-medium text-slate-500">
+              {driver.evidence}
+            </div>
+
+            <div className="flex flex-wrap gap-2">
+              {driver.supporting_metrics.map((metric) => (
+                <span
+                  key={metric}
+                  className="rounded-full bg-slate-50 border border-slate-100 px-3 py-1 text-[10px] font-bold text-slate-500 uppercase tracking-wide"
+                >
+                  {metric.replace('_', ' ')}
+                </span>
+              ))}
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </section>
   )
 }

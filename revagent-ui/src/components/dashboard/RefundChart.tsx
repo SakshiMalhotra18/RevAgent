@@ -25,39 +25,56 @@ function formatPercent(value: number) {
 
 export default function RefundChart({ data }: RefundChartProps) {
   return (
-    <div className="rounded-2xl border border-zinc-800 bg-zinc-900 p-6">
-      <div className="mb-4 text-lg font-semibold text-zinc-50">
-        Refund Rate Trend
+    <div className="rounded-[2rem] border border-slate-200 bg-white p-8 shadow-sm transition-all hover:shadow-md">
+      <div className="mb-8 flex items-center justify-between">
+        <div>
+          <h3 className="text-lg font-black tracking-tight text-slate-900">
+            Refund Rate Analysis
+          </h3>
+          <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">Risk Monitoring · Percentage</p>
+        </div>
       </div>
 
-      <div className="h-[320px]">
+      <div className="h-[300px]">
         <ResponsiveContainer width="100%" height="100%">
-          <AreaChart data={data}>
-            <CartesianGrid stroke="rgba(39,39,42,0.5)" vertical={false} />
+          <AreaChart data={data} margin={{ top: 10, right: 10, left: -20, bottom: 0 }}>
+            <defs>
+              <linearGradient id="colorRefund" x1="0" y1="0" x2="0" y2="1">
+                <stop offset="5%" stopColor="#f43f5e" stopOpacity={0.15} />
+                <stop offset="95%" stopColor="#f43f5e" stopOpacity={0} />
+              </linearGradient>
+            </defs>
+            <CartesianGrid strokeDasharray="6 6" stroke="#f1f5f9" vertical={false} />
 
             <XAxis
               dataKey="date"
               tickFormatter={(value) => formatDate(String(value))}
-              tick={{ fill: "#a1a1aa", fontSize: 12 }}
-              axisLine={{ stroke: "#27272a" }}
+              tick={{ fill: "#94a3b8", fontSize: 10, fontWeight: 600 }}
+              axisLine={false}
               tickLine={false}
+              dy={15}
             />
 
             <YAxis
               tickFormatter={(value) => formatPercent(Number(value))}
-              tick={{ fill: "#a1a1aa", fontSize: 12 }}
-              axisLine={{ stroke: "#27272a" }}
+              tick={{ fill: "#94a3b8", fontSize: 10, fontWeight: 600 }}
+              axisLine={false}
               tickLine={false}
+              dx={-5}
               width={55}
             />
 
             <Tooltip
               contentStyle={{
-                backgroundColor: "#18181b",
-                border: "1px solid #27272a",
-                borderRadius: 12,
-                color: "#fafafa",
+                backgroundColor: "#ffffff",
+                border: "1px solid #e2e8f0",
+                borderRadius: "16px",
+                fontSize: "12px",
+                padding: "16px",
+                boxShadow: "0 10px 15px -3px rgb(0 0 0 / 0.1)",
               }}
+              itemStyle={{ color: "#1e293b", fontWeight: 700 }}
+              cursor={{ stroke: "#e2e8f0", strokeWidth: 2 }}
               labelFormatter={(value) => formatDate(String(value))}
               formatter={(value) => [
                 formatPercent(Number(value)),
@@ -68,9 +85,12 @@ export default function RefundChart({ data }: RefundChartProps) {
             <Area
               type="monotone"
               dataKey="refund_rate"
-              stroke="#ef4444"
-              fill="rgba(239,68,68,0.15)"
-              strokeWidth={2}
+              stroke="#f43f5e"
+              fillOpacity={1}
+              fill="url(#colorRefund)"
+              strokeWidth={3}
+              dot={false}
+              activeDot={{ r: 6, strokeWidth: 0, fill: '#f43f5e' }}
             />
           </AreaChart>
         </ResponsiveContainer>

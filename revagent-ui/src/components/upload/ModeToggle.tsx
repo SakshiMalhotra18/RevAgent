@@ -13,22 +13,20 @@ export default function ModeToggle({
 }: ModeToggleProps) {
   const description =
     mode === "recent_issues"
-      ? "Anomalies from the last 7–14 days"
-      : "Patterns across your full dataset"
+      ? "Focusing on anomalies from the last 14 days"
+      : "Extracting patterns across your entire history"
 
   return (
-    <div className="mt-6">
-      <div className="mb-3 text-sm font-medium text-zinc-300">Analysis Mode</div>
-
-      <div className="flex gap-2">
+    <div className="w-full">
+      <div className="flex p-1.5 gap-1.5 rounded-2xl bg-slate-100/50 border border-slate-200">
         <button
           type="button"
           disabled={disabled}
           onClick={() => onChange("recent_issues")}
-          className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
+          className={`flex-1 rounded-xl px-4 py-3 text-xs font-black uppercase tracking-widest transition-all ${
             mode === "recent_issues"
-              ? "bg-violet-600 text-white"
-              : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
+              ? "bg-white text-violet-600 shadow-sm"
+              : "text-slate-400 hover:text-slate-600"
           } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
         >
           Recent Issues
@@ -38,17 +36,19 @@ export default function ModeToggle({
           type="button"
           disabled={disabled}
           onClick={() => onChange("historical_patterns")}
-          className={`rounded-lg px-4 py-2 text-sm font-medium transition ${
+          className={`flex-1 rounded-xl px-4 py-3 text-xs font-black uppercase tracking-widest transition-all ${
             mode === "historical_patterns"
-              ? "bg-violet-600 text-white"
-              : "bg-zinc-800 text-zinc-400 hover:bg-zinc-700"
+              ? "bg-white text-violet-600 shadow-sm"
+              : "text-slate-400 hover:text-slate-600"
           } ${disabled ? "opacity-50 cursor-not-allowed" : ""}`}
         >
-          Historical Patterns
+          Historical
         </button>
       </div>
 
-      <div className="mt-2 text-sm text-zinc-500">{description}</div>
+      <div className="mt-4 text-center text-xs font-bold text-slate-400 italic">
+        {description}
+      </div>
     </div>
   )
 }

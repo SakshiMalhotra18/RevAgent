@@ -53,17 +53,17 @@ export default function DownloadActions({ metrics }: DownloadActionsProps) {
   }
 
   return (
-    <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+    <div className="mt-12 flex flex-col gap-4 sm:flex-row">
       <button
         onClick={handlePdfDownload}
-        className="rounded-lg bg-violet-600 px-4 py-2 text-sm font-semibold text-white transition hover:bg-violet-500"
+        className="flex-1 rounded-2xl bg-violet-600 px-8 py-4 text-sm font-black uppercase tracking-widest text-white shadow-lg shadow-violet-600/20 transition hover:bg-violet-700 hover:shadow-violet-600/40"
       >
-        Download PDF Report
+        Export PDF Report
       </button>
 
       <button
         onClick={handleCsvDownload}
-        className="rounded-lg border border-zinc-700 bg-zinc-900 px-4 py-2 text-sm font-semibold text-zinc-200 transition hover:bg-zinc-800"
+        className="flex-1 rounded-2xl border border-slate-200 bg-white px-8 py-4 text-sm font-black uppercase tracking-widest text-slate-600 shadow-sm transition hover:bg-slate-50 hover:border-slate-300"
       >
         Download CSV Data
       </button>
